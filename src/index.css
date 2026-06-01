@@ -115,3 +115,26 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 @supports (-webkit-touch-callout: none) {
   html, body { overscroll-behavior-y: none; }
 }
+
+/* ===== Scene-08 editorial Acts: collapse multi-col grids on mobile ===== */
+@media (max-width: 720px) {
+  .rin-act {
+    grid-template-columns: 1fr !important;
+    margin-bottom: 5rem !important;
+    row-gap: 1.5rem !important;
+  }
+  /* The Moments act positions children with explicit gridColumn/gridRow —
+     reset those so they stack naturally in a single column. */
+  .rin-act--moments > * {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    align-self: auto !important;
+  }
+  /* Stat numbers inside the editorial sections were sized at 9vw — clamp
+     tighter so they never overflow the column. */
+  .rin-act span {
+    max-width: 100%;
+  }
+}

@@ -357,6 +357,7 @@ function Header() {
 function ActHero() {
   return (
     <div
+      className="rin-act rin-act--hero"
       style={{
         maxWidth: '1240px',
         margin: '0 auto 10rem',
@@ -400,6 +401,7 @@ function ActHero() {
 function ActSecondary() {
   return (
     <div
+      className="rin-act rin-act--secondary"
       style={{
         maxWidth: '1240px',
         margin: '0 auto 10rem',
@@ -523,6 +525,7 @@ function ActMoments() {
   // Editorial asymmetric collage — 8 supporting moments + 2+ Countries stat
   return (
     <div
+      className="rin-act rin-act--moments"
       style={{
         maxWidth: '1240px',
         margin: '0 auto',

@@ -67,7 +67,7 @@ export default function Scene11CTA() {
       <span
         ref={line2Ref}
         style={{
-          fontSize: 'clamp(3rem, 9vw, 11rem)',
+          fontSize: 'clamp(2.25rem, 9vw, 11rem)',
           fontWeight: 900,
           letterSpacing: '-0.04em',
           lineHeight: 0.9,
@@ -78,6 +78,8 @@ export default function Scene11CTA() {
           opacity: 0,
           transform: 'translateY(60px)',
           willChange: 'transform, opacity',
+          overflowWrap: 'break-word',
+          wordBreak: 'break-word',
         }}
       >
         Let's create<br />something<br />unforgettable.
