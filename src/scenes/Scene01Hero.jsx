@@ -1,28 +1,8 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { motion } from 'framer-motion'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 export default function Scene01Hero() {
-  const videoRef = useRef(null)
   const sectionRef = useRef(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.to(videoRef.current, {
-        yPercent: 25,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: 'top top',
-          end: 'bottom top',
-          scrub: true,
-        },
-      })
-    }, sectionRef)
-
-    return () => ctx.revert()
-  }, [])
 
   const container = {
     hidden: {},
@@ -42,22 +22,10 @@ export default function Scene01Hero() {
       style={{
         height: '100vh',
         background: 'radial-gradient(ellipse 80% 60% at 50% 40%, #1a1a2e 0%, #0d0d0d 50%, #000 100%)',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      <video
-        ref={videoRef}
-        className="video-bg"
-        autoPlay
-        muted
-        loop
-        playsInline
-        style={{ transformOrigin: 'center center' }}
-      >
-        <source src="/videos/founder-stories.mp4" type="video/mp4" />
-      </video>
-
-      <div className="overlay-full" />
-
       <motion.div
         className="scene-content"
         variants={container}
@@ -70,6 +38,8 @@ export default function Scene01Hero() {
           alignItems: 'flex-start',
           height: '100%',
           padding: '0 8vw 10vh',
+          position: 'relative',
+          zIndex: 2,
         }}
       >
         <motion.p
