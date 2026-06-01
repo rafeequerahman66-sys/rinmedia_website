@@ -56,6 +56,49 @@ function ProjectItem({ project, index }) {
     return () => ctx.revert()
   }, [])
 
+  // Mobile-safe autoplay: explicitly force muted on the DOM node + only call
+  // play() when the video enters the viewport. iOS Safari will refuse autoplay
+  // unless the element is actually visible AND muted at the JS layer (not just
+  // a JSX attribute — React sometimes binds it after the browser checks).
+  useEffect(() => {
+    if (!project.video || !imgRef.current) return
+    const video = imgRef.current
+    // Belt-and-braces: set every flag iOS Safari might check.
+    video.muted = true
+    video.defaultMuted = true
+    video.playsInline = true
+    video.setAttribute('muted', '')
+    video.setAttribute('playsinline', '')
+    video.setAttribute('webkit-playsinline', '')
+
+    const tryPlay = () => {
+      const p = video.play()
+      if (p && typeof p.catch === 'function') p.catch(() => { /* swallow autoplay-blocked */ })
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) tryPlay()
+        else video.pause()
+      },
+      { threshold: 0.2 }
+    )
+    observer.observe(video)
+
+    // Some mobile browsers only unblock playback after a real touch; piggyback
+    // on the first touchstart anywhere on the page.
+    const onTouch = () => {
+      tryPlay()
+      window.removeEventListener('touchstart', onTouch)
+    }
+    window.addEventListener('touchstart', onTouch, { once: true, passive: true })
+
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('touchstart', onTouch)
+    }
+  }, [project.video])
+
   return (
     <div
       ref={ref}
@@ -78,7 +121,7 @@ function ProjectItem({ project, index }) {
           muted
           loop
           playsInline
-          preload="auto"
+          preload="metadata"
           style={{
             position: 'absolute',
             inset: '-15% 0',
