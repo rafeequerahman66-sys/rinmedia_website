@@ -53,10 +53,7 @@ export default function Scene01Hero() {
         playsInline
         style={{ transformOrigin: 'center center' }}
       >
-        <source
-          src="https://assets.mixkit.co/videos/preview/mixkit-cinematic-shot-of-a-woman-walking-on-a-bridge-40003-large.mp4"
-          type="video/mp4"
-        />
+        <source src="/videos/founder-stories.mp4" type="video/mp4" />
       </video>
 
       <div className="overlay-full" />
