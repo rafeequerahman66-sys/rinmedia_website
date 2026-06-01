@@ -90,7 +90,8 @@ export default function Scene11CTA() {
         transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
         style={{ marginTop: '5rem', display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap' }}
       >
-        <motion.button
+        <motion.a
+          href="mailto:rinmedia.xyz@gmail.com?subject=Start%20a%20Project%20%E2%80%94%20RIN%20MEDIA&body=Hi%20Rin%20Media%2C%0A%0AI%27d%20like%20to%20start%20a%20project."
           whileHover={{ scale: 1.04, background: '#e0e0e0' }}
           whileTap={{ scale: 0.97 }}
           style={{
@@ -105,11 +106,13 @@ export default function Scene11CTA() {
             textTransform: 'uppercase',
             letterSpacing: '0.12em',
             cursor: 'pointer',
+            textDecoration: 'none',
+            display: 'inline-block',
             transition: 'background 0.3s ease',
           }}
         >
           Start a Project
-        </motion.button>
+        </motion.a>
 
         <motion.a
           href="mailto:rinmedia.xyz@gmail.com"
