@@ -231,6 +231,11 @@ function LogoStrip() {
           opacity: 0.75;
           transition: opacity 0.3s ease, transform 0.3s ease;
         }
+        /* On phones the grid cells are narrower than 180px — never let the
+           image overflow the cell. Inline max-width loses to !important. */
+        @media (max-width: 640px) {
+          .rin-logo-cell__img { max-width: 100% !important; }
+        }
         .rin-logo-cell__img--invert {
           filter: brightness(0) invert(1);
         }

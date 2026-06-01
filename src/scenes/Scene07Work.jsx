@@ -59,10 +59,12 @@ function ProjectItem({ project, index }) {
   return (
     <div
       ref={ref}
+      className="rin-project-tile"
       style={{
         position: 'relative',
         width: '100%',
         height: '90vh',
+        minHeight: '420px',
         overflow: 'hidden',
         cursor: 'crosshair',
       }}
@@ -118,9 +120,9 @@ function ProjectItem({ project, index }) {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        padding: '0 8vw 6vh',
+        padding: '0 max(5vw, 1.25rem) 6vh',
       }}>
-        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between' }}>
+        <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '1rem' }}>
           <div ref={titleRef}>
             <p style={{
               fontSize: '0.7rem',

@@ -90,3 +90,28 @@ body {
   letter-spacing: -0.03em;
   color: #fff;
 }
+
+/* ===== Mobile-friendly base rules ===== */
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+@media (max-width: 720px) {
+  /* Most scenes use 8vw padding — too tight at small widths.
+     Floor the sidegap at 1.25rem so headlines never crash the edge. */
+  section[id^="scene-"] {
+    padding-left: max(5vw, 1.25rem) !important;
+    padding-right: max(5vw, 1.25rem) !important;
+  }
+  /* Apple HIG: 44px min tap target */
+  button { min-height: 44px; }
+  /* Stat numbers — keep punchy but viewport-safe */
+  .counter-num { font-size: clamp(2.75rem, 14vw, 5.5rem); }
+}
+
+@media (max-width: 480px) {
+  body { font-size: 0.95rem; }
+}
+
+@supports (-webkit-touch-callout: none) {
+  html, body { overscroll-behavior-y: none; }
+}

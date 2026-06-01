@@ -88,7 +88,7 @@ export default function Scene01Hero() {
           </motion.h1>
         </div>
 
-        <motion.div variants={item} style={{ display: 'flex', alignItems: 'center', gap: '3rem' }}>
+        <motion.div variants={item} style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
           <motion.button
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}

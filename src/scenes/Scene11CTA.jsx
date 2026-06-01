@@ -88,7 +88,7 @@ export default function Scene11CTA() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-        style={{ marginTop: '5rem', display: 'flex', gap: '1.5rem', alignItems: 'center' }}
+        style={{ marginTop: '5rem', display: 'flex', gap: '1.5rem', alignItems: 'center', flexWrap: 'wrap' }}
       >
         <motion.button
           whileHover={{ scale: 1.04, background: '#e0e0e0' }}
