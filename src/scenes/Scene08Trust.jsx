@@ -598,7 +598,7 @@ function ActMoments() {
         <Photo
           src={IMG.bybitCheers}
           alt="ByBit night cheers"
-          caption="ByBit · Crypto Mixer"
+          caption="ByBit · IBW After Hours"
           imgStyle={{ aspectRatio: '3/2' }}
           delay={0.18}
         />
@@ -609,7 +609,7 @@ function ActMoments() {
         <Photo
           src={IMG.bybitCard}
           alt="ByBit debit card reveal at Zo House"
-          caption="ByBit · Card Reveal · Zo House"
+          caption="ByBit · IBW After Hours"
           imgStyle={{ aspectRatio: '3/2' }}
           delay={0.05}
         />
