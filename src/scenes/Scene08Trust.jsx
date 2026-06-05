@@ -588,7 +588,7 @@ function ActMoments() {
         <Photo
           src={IMG.rooftopDinner}
           alt="Zo House BLR rooftop"
-          caption="Zo House BLR"
+          caption="Founder Dinner · Zo House BLR"
           imgStyle={{ aspectRatio: '16/10' }}
           delay={0.05}
         />
