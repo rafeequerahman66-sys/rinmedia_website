@@ -9,10 +9,10 @@ const IMG = {
   couchTalk: '/images/trust/couch-talk.jpg',
   monadBlitz: '/images/trust/monad-blitz.jpg',
   rooftopDinner: '/images/trust/rooftop-dinner.jpg',
-  candlelit: '/images/trust/candlelit-conversation.jpg',
   founderChat: '/images/trust/founder-chat.jpg',
-  dinnerMeetup: '/images/trust/dinner-meetup.jpg',
   boundlessVC: '/images/trust/Consumer%20Ai%20Breakout%20-%20Boundless%20VC.jpg',
+  bybitCard: '/images/trust/bybit-card.jpg',
+  bybitCheers: '/images/trust/bybit-cheers.jpg',
 }
 
 const ease = [0.22, 1, 0.36, 1]
@@ -583,12 +583,12 @@ function ActMoments() {
         />
       </div>
 
-      {/* Row 3 — Rooftop hero (wide cinematic) + candlelit */}
+      {/* Row 3 — Zo House BLR rooftop (wide cinematic) + ByBit cheers */}
       <div style={{ gridColumn: '1 / span 7', gridRow: '3' }}>
         <Photo
           src={IMG.rooftopDinner}
-          alt="Rooftop founder dinner"
-          caption="Founder Dinner · Rooftop"
+          alt="Zo House BLR rooftop"
+          caption="Zo House BLR"
           imgStyle={{ aspectRatio: '16/10' }}
           delay={0.05}
         />
@@ -596,20 +596,20 @@ function ActMoments() {
 
       <div style={{ gridColumn: '9 / span 4', gridRow: '3', alignSelf: 'flex-end', paddingBottom: '60px' }}>
         <Photo
-          src={IMG.candlelit}
-          alt="Candlelit conversation"
-          caption="Off the Clock"
+          src={IMG.bybitCheers}
+          alt="ByBit night cheers"
+          caption="ByBit · Crypto Mixer"
           imgStyle={{ aspectRatio: '3/2' }}
           delay={0.18}
         />
       </div>
 
-      {/* Row 4 — Founder dinner + chat (intimate close-ups) */}
+      {/* Row 4 — ByBit card moment + builders unwind */}
       <div style={{ gridColumn: '2 / span 5', gridRow: '4', alignSelf: 'flex-start', paddingTop: '40px' }}>
         <Photo
-          src={IMG.dinnerMeetup}
-          alt="Founder dinner meetup"
-          caption="Quiet Tables, Loud Ideas"
+          src={IMG.bybitCard}
+          alt="ByBit debit card reveal at Zo House"
+          caption="ByBit · Card Reveal · Zo House"
           imgStyle={{ aspectRatio: '3/2' }}
           delay={0.05}
         />
