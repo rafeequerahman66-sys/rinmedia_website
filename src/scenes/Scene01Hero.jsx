@@ -1,15 +1,15 @@
 import { useRef } from 'react'
 import { motion } from 'framer-motion'
 import ChapterMarker from '../components/ChapterMarker'
-import HeroBackground3D from '../components/HeroBackground3D'
 
 export default function Scene01Hero() {
   const sectionRef = useRef(null)
 
   const container = {
     hidden: {},
-    show: { transition: { staggerChildren: 0.18, delayChildren: 0.5 } },
+    show: { transition: { staggerChildren: 0.15, delayChildren: 0.4 } },
   }
+
   const item = {
     hidden: { opacity: 0, y: 40 },
     show: { opacity: 1, y: 0, transition: { duration: 1.2, ease: [0.22, 1, 0.36, 1] } },
@@ -22,123 +22,123 @@ export default function Scene01Hero() {
       id="scene-01"
       style={{
         height: '100vh',
-        background: '#000',
+        background: 'radial-gradient(ellipse 80% 60% at 50% 40%, #1a1a2e 0%, #0d0d0d 50%, #000 100%)',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
       <ChapterMarker n={1} label="Intro" />
-
-      {/* 3D cube tunnel — Blockwee-style background */}
-      <HeroBackground3D />
-
-      {/* Centered hero content */}
       <motion.div
+        className="scene-content"
         variants={container}
         initial="hidden"
         animate="show"
         style={{
-          position: 'relative',
-          zIndex: 2,
           display: 'flex',
           flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
+          justifyContent: 'flex-end',
+          alignItems: 'flex-start',
           height: '100%',
-          padding: '0 6vw',
-          textAlign: 'center',
+          padding: '0 8vw 10vh',
+          position: 'relative',
+          zIndex: 2,
         }}
       >
-        <motion.span
+        <motion.p
           variants={item}
           style={{
-            fontSize: 'clamp(2rem, 5.5vw, 5.5rem)',
-            fontWeight: 300,
-            letterSpacing: '-0.02em',
-            color: '#fff',
-            lineHeight: 1.05,
-            fontFamily: "'Satoshi', sans-serif",
-            display: 'block',
-            marginBottom: '0.5rem',
-          }}
-        >
-          We don't do
-        </motion.span>
-
-        <motion.h1
-          variants={item}
-          style={{
-            fontSize: 'clamp(4rem, 14vw, 14rem)',
-            fontWeight: 900,
-            letterSpacing: '-0.045em',
-            lineHeight: 0.92,
-            color: '#fff',
+            fontSize: '0.75rem',
+            letterSpacing: '0.3em',
             textTransform: 'uppercase',
-            fontFamily: "'Satoshi', sans-serif",
-            margin: 0,
+            color: 'rgba(255,255,255,0.5)',
+            marginBottom: '2rem',
+            fontWeight: 300,
           }}
         >
-          Normal
-        </motion.h1>
+          Creative Production Studio
+        </motion.p>
+
+        <div style={{ overflow: 'hidden', marginBottom: '0.5rem' }}>
+          <motion.h1
+            variants={item}
+            style={{
+              fontSize: 'clamp(3.5rem, 11vw, 13rem)',
+              fontWeight: 900,
+              lineHeight: 0.88,
+              letterSpacing: '-0.04em',
+              textTransform: 'uppercase',
+              color: '#fff',
+            }}
+          >
+            We Don't
+          </motion.h1>
+        </div>
+
+        <div style={{ overflow: 'hidden', marginBottom: '3.5rem' }}>
+          <motion.h1
+            variants={item}
+            style={{
+              fontSize: 'clamp(3.5rem, 11vw, 13rem)',
+              fontWeight: 900,
+              lineHeight: 0.88,
+              letterSpacing: '-0.04em',
+              textTransform: 'uppercase',
+              color: '#fff',
+            }}
+          >
+            Do Normal.
+          </motion.h1>
+        </div>
+
+        <motion.div variants={item} style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
+          <motion.button
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.97 }}
+            style={{
+              padding: '1rem 2.5rem',
+              background: '#fff',
+              color: '#000',
+              border: 'none',
+              borderRadius: '100px',
+              fontFamily: "'Outfit', sans-serif",
+              fontWeight: 700,
+              fontSize: '0.8rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.12em',
+              cursor: 'pointer',
+            }}
+            onClick={() => document.getElementById('scene-07')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            View Our Work
+          </motion.button>
+
+          <span style={{ fontSize: '0.75rem', letterSpacing: '0.2em', color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase' }}>
+            Scroll to explore
+          </span>
+        </motion.div>
       </motion.div>
 
-      {/* Scroll Down — centered bottom */}
+      {/* Scroll indicator */}
       <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.6, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        onClick={() => {
-          document.getElementById('scene-02')?.scrollIntoView({ behavior: 'smooth' })
-        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2, duration: 1 }}
         style={{
           position: 'absolute',
-          bottom: 'clamp(2rem, 5vh, 3.5rem)',
-          left: '50%',
-          transform: 'translateX(-50%)',
+          bottom: '4vh',
+          right: '5vw',
           zIndex: 3,
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: '0.9rem',
-          cursor: 'pointer',
-          userSelect: 'none',
+          gap: '0.5rem',
         }}
       >
-        <span
-          style={{
-            fontSize: '0.85rem',
-            color: 'rgba(255,255,255,0.85)',
-            letterSpacing: '0.02em',
-            fontFamily: "'Satoshi', sans-serif",
-            fontWeight: 400,
-          }}
-        >
-          Scroll Down
-        </span>
-
-        <div
-          style={{
-            width: '22px',
-            height: '36px',
-            border: '1.5px solid rgba(255,255,255,0.7)',
-            borderRadius: '14px',
-            position: 'relative',
-            overflow: 'hidden',
-          }}
-        >
+        <div style={{ width: '1px', height: '60px', background: 'rgba(255,255,255,0.3)', position: 'relative', overflow: 'hidden' }}>
           <motion.div
-            animate={{ y: [4, 18, 4] }}
-            transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: '4px',
-              height: '4px',
-              background: '#fff',
-              borderRadius: '50%',
-            }}
+            animate={{ y: ['0%', '100%'] }}
+            transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '50%', background: '#fff' }}
           />
         </div>
       </motion.div>

@@ -54,35 +54,12 @@ export default function Navbar({ lenisRef }) {
         }
         .rin-nav-link {
           background: none; border: none; color: rgba(255,255,255,0.6);
-          font-size: 0.8rem; font-family: 'Satoshi', sans-serif; font-weight: 400;
+          font-size: 0.8rem; font-family: 'Outfit', sans-serif; font-weight: 400;
           text-transform: uppercase; letter-spacing: 0.12em;
           cursor: pointer; padding: 0;
           transition: color 0.3s ease;
         }
         .rin-nav-link:hover { color: #fff; }
-
-        .rin-nav-cta {
-          background: var(--rin-accent, #D9B26A);
-          color: #0a0a0a;
-          font-family: 'Satoshi', sans-serif;
-          font-weight: 700;
-          font-size: 0.78rem;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          padding: 0.7rem 1.4rem;
-          border-radius: 999px;
-          text-decoration: none;
-          margin-left: 0.5rem;
-          transition: transform 0.3s cubic-bezier(0.22,1,0.36,1),
-                      background 0.3s ease;
-          display: inline-flex;
-          align-items: center;
-          line-height: 1;
-        }
-        .rin-nav-cta:hover {
-          background: #eecf8d;
-          transform: translateY(-1px);
-        }
       `}</style>
 
       <motion.nav
@@ -130,12 +107,6 @@ export default function Navbar({ lenisRef }) {
               {label}
             </button>
           ))}
-          <a
-            href="mailto:rinmedia.xyz@gmail.com?subject=Book%20a%20Call%20%E2%80%94%20RIN%20MEDIA&body=Hi%20Rin%20Media%2C%0A%0AI%27d%20like%20to%20book%20a%20call."
-            className="rin-nav-cta"
-          >
-            Book a Call
-          </a>
         </div>
 
         {/* Mobile burger button */}
