@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import RetroCameraCanvas from '../components/RetroCameraCanvas'
+import ChapterMarker from '../components/ChapterMarker'
 
 export default function Scene03Transition() {
   const sectionRef = useRef(null)
@@ -52,6 +53,7 @@ export default function Scene03Transition() {
         position: 'relative',
       }}
     >
+      <ChapterMarker n={3} label="Story" />
       <RetroCameraCanvas
         scrollProgressRef={scrollProgressRef}
         modelPath="/models/movie-camera.glb"

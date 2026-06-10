@@ -3,6 +3,10 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
 import Navbar from './components/Navbar'
+import SiteLoader from './components/SiteLoader'
+import CustomCursor from './components/CustomCursor'
+import ScrollProgress from './components/ScrollProgress'
+import Footer from './components/Footer'
 import Scene01Hero from './scenes/Scene01Hero'
 import Scene02Pacing from './scenes/Scene02Pacing'
 import Scene03Transition from './scenes/Scene03Transition'
@@ -47,7 +51,10 @@ export default function App() {
   }, [])
 
   return (
-    <div style={{ background: '#000', color: '#fff', fontFamily: "'Outfit', sans-serif" }}>
+    <div style={{ background: '#000', color: '#fff', fontFamily: "'Satoshi', 'Outfit', sans-serif" }}>
+      <SiteLoader />
+      <CustomCursor />
+      <ScrollProgress />
       <Navbar lenisRef={lenisRef} />
       <Scene01Hero />
       <Scene02Pacing />
@@ -60,6 +67,7 @@ export default function App() {
       <Scene09Positioning />
       <Scene10Results />
       <Scene11CTA />
+      <Footer />
     </div>
   )
 }

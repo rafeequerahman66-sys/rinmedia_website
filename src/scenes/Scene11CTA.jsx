@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import ChapterMarker from '../components/ChapterMarker'
 
 export default function Scene11CTA() {
   const sectionRef = useRef(null)
@@ -46,6 +47,7 @@ export default function Scene11CTA() {
         borderTop: '1px solid rgba(255,255,255,0.05)',
       }}
     >
+      <ChapterMarker n={11} label="Contact" />
       <span
         ref={line1Ref}
         style={{

@@ -3,6 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { Environment, Float, MeshDistortMaterial, Torus } from '@react-three/drei'
 import { motion } from 'framer-motion'
 import * as THREE from 'three'
+import ChapterMarker from '../components/ChapterMarker'
 
 function AbstractForm() {
   const meshRef = useRef()
@@ -122,6 +123,7 @@ export default function Scene05Reveal() {
         padding: '10vh 0',
       }}
     >
+      <ChapterMarker n={5} label="Studio" />
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}

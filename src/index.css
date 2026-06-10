@@ -1,8 +1,14 @@
 @import "tailwindcss";
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&display=swap');
 
 :root {
   --ease-cinematic: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Brand accent — refined champagne gold */
+  --rin-accent: #D9B26A;
+  --rin-accent-soft: rgba(217, 178, 106, 0.16);
+  --rin-accent-line: rgba(217, 178, 106, 0.32);
 }
 
 * {
@@ -22,18 +28,15 @@ html {
 
 body {
   background: #000;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Satoshi', 'Outfit', sans-serif;
   overflow-x: hidden;
 }
 
 ::-webkit-scrollbar { width: 2px; }
 ::-webkit-scrollbar-track { background: #000; }
-::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+::-webkit-scrollbar-thumb { background: var(--rin-accent-line); border-radius: 10px; }
 
-.clip-text {
-  overflow: hidden;
-}
-
+.clip-text { overflow: hidden; }
 .clip-inner {
   display: block;
   transform: translateY(105%);
@@ -59,12 +62,7 @@ body {
 .overlay-dark {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0.2) 0%,
-    rgba(0,0,0,0.5) 50%,
-    rgba(0,0,0,0.8) 100%
-  );
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.8) 100%);
   z-index: 1;
 }
 
@@ -82,7 +80,6 @@ body {
   height: 100%;
 }
 
-/* Counter number style */
 .counter-num {
   font-size: clamp(3.5rem, 8vw, 8rem);
   font-weight: 900;
@@ -91,20 +88,47 @@ body {
   color: #fff;
 }
 
-/* ===== Mobile-friendly base rules ===== */
+/* ===== Chapter markers (small numerals top-right of pinned scenes) ===== */
+.rin-chapter {
+  position: absolute;
+  top: clamp(5rem, 9vh, 7rem);
+  right: clamp(1.25rem, 5vw, 3rem);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: rgba(255, 255, 255, 0.45);
+  text-transform: uppercase;
+  font-weight: 400;
+  pointer-events: none;
+  user-select: none;
+}
+.rin-chapter__num {
+  color: var(--rin-accent);
+  font-weight: 700;
+}
+.rin-chapter__divider {
+  width: 22px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+}
+@media (max-width: 720px) {
+  .rin-chapter { top: 4.5rem; font-size: 10px; letter-spacing: 0.25em; }
+  .rin-chapter__divider { width: 16px; }
+}
 
+/* ===== Mobile base ===== */
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 @media (max-width: 720px) {
-  /* Most scenes use 8vw padding — too tight at small widths.
-     Floor the sidegap at 1.25rem so headlines never crash the edge. */
   section[id^="scene-"] {
     padding-left: max(5vw, 1.25rem) !important;
     padding-right: max(5vw, 1.25rem) !important;
   }
-  /* Apple HIG: 44px min tap target */
   button { min-height: 44px; }
-  /* Stat numbers — keep punchy but viewport-safe */
   .counter-num { font-size: clamp(2.75rem, 14vw, 5.5rem); }
 }
 
@@ -116,15 +140,13 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   html, body { overscroll-behavior-y: none; }
 }
 
-/* ===== Scene-08 editorial Acts: collapse multi-col grids on mobile ===== */
+/* ===== Scene-08 editorial Acts ===== */
 @media (max-width: 720px) {
   .rin-act {
     grid-template-columns: 1fr !important;
     margin-bottom: 5rem !important;
     row-gap: 1.5rem !important;
   }
-  /* The Moments act positions children with explicit gridColumn/gridRow —
-     reset those so they stack naturally in a single column. */
   .rin-act--moments > * {
     grid-column: 1 / -1 !important;
     grid-row: auto !important;
@@ -132,9 +154,183 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
     padding-top: 0 !important;
     align-self: auto !important;
   }
-  /* Stat numbers inside the editorial sections were sized at 9vw — clamp
-     tighter so they never overflow the column. */
-  .rin-act span {
-    max-width: 100%;
-  }
+  .rin-act span { max-width: 100%; }
+}
+
+/* ===== Custom cursor (hidden on touch) ===== */
+@media (hover: hover) and (pointer: fine) {
+  * { cursor: none !important; }
+}
+.rin-cursor {
+  position: fixed;
+  top: 0; left: 0;
+  width: 28px; height: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              height 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.3s ease,
+              background 0.3s ease;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+.rin-cursor--hover {
+  width: 64px;
+  height: 64px;
+  border-color: var(--rin-accent);
+  background: var(--rin-accent-soft);
+  mix-blend-mode: normal;
+}
+.rin-cursor__dot {
+  position: fixed;
+  top: 0; left: 0;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  mix-blend-mode: difference;
+}
+@media (hover: none), (pointer: coarse) {
+  .rin-cursor, .rin-cursor__dot { display: none; }
+}
+
+/* ===== Scroll progress bar (top) ===== */
+.rin-progress {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  z-index: 1001;
+  pointer-events: none;
+}
+.rin-progress__fill {
+  height: 100%;
+  background: var(--rin-accent);
+  transform-origin: left center;
+  transform: scaleX(0);
+  will-change: transform;
+}
+
+/* ===== Site loader ===== */
+.rin-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  font-family: 'Satoshi', sans-serif;
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+              visibility 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.rin-loader--done {
+  opacity: 0;
+  visibility: hidden;
+}
+.rin-loader__mark {
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  font-size: 0.85rem;
+  color: #fff;
+  text-transform: uppercase;
+}
+.rin-loader__count {
+  font-weight: 300;
+  font-size: clamp(3rem, 9vw, 7rem);
+  letter-spacing: -0.04em;
+  color: var(--rin-accent);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.rin-loader__status {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+.rin-loader__bar {
+  width: clamp(180px, 26vw, 280px);
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+.rin-loader__bar-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--rin-accent);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 0.15s linear;
+}
+
+/* ===== Magnetic button — visual cue ===== */
+.rin-magnetic {
+  display: inline-flex;
+  will-change: transform;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ===== Footer ===== */
+.rin-footer {
+  background: #000;
+  padding: 4rem 6vw 3rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-family: 'Satoshi', sans-serif;
+}
+.rin-footer__inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.rin-footer__brand {
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: #fff;
+}
+.rin-footer__meta {
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+.rin-footer__meta a {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.rin-footer__meta a:hover { color: var(--rin-accent); }
+.rin-footer__sep {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: inline-block;
+}
+.rin-footer__location {
+  color: var(--rin-accent) !important;
+}
+@media (max-width: 720px) {
+  .rin-footer__inner { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
 }

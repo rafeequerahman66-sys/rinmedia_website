@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import ChapterMarker from '../components/ChapterMarker'
 
 const CAPS = [
   { num: '01', title: 'Brand Films', sub: 'Stories that move people.' },
@@ -109,6 +110,7 @@ function CapItem({ cap, index }) {
 export default function Scene06Capabilities() {
   return (
     <section id="scene-06" style={{ background: '#000', width: '100%' }}>
+      <ChapterMarker n={6} label="Craft" />
       <div style={{ padding: '8vh 8vw 4vh' }}>
         <motion.p
           initial={{ opacity: 0, y: 20 }}

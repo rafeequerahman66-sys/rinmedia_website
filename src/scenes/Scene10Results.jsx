@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import ChapterMarker from '../components/ChapterMarker'
 
 const STATS = [
   { value: 100, suffix: '+', label: 'Events Captured' },
@@ -91,6 +92,7 @@ export default function Scene10Results() {
         borderTop: '1px solid rgba(255,255,255,0.05)',
       }}
     >
+      <ChapterMarker n={10} label="Impact" />
       <motion.p
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
