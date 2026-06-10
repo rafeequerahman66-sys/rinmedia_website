@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import ChapterMarker from '../components/ChapterMarker'
 
 export default function Scene09Positioning() {
   const sectionRef = useRef(null)
@@ -47,7 +46,6 @@ export default function Scene09Positioning() {
         overflow: 'hidden',
       }}
     >
-      <ChapterMarker n={9} label="Stand" />
       <span
         ref={line1Ref}
         style={{

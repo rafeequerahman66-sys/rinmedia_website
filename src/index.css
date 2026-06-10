@@ -88,38 +88,6 @@ body {
   color: #fff;
 }
 
-/* ===== Chapter markers (small numerals top-right of pinned scenes) ===== */
-.rin-chapter {
-  position: absolute;
-  top: clamp(5rem, 9vh, 7rem);
-  right: clamp(1.25rem, 5vw, 3rem);
-  z-index: 4;
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-family: 'Satoshi', sans-serif;
-  font-size: 11px;
-  letter-spacing: 0.32em;
-  color: rgba(255, 255, 255, 0.45);
-  text-transform: uppercase;
-  font-weight: 400;
-  pointer-events: none;
-  user-select: none;
-}
-.rin-chapter__num {
-  color: var(--rin-accent);
-  font-weight: 700;
-}
-.rin-chapter__divider {
-  width: 22px;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.2);
-}
-@media (max-width: 720px) {
-  .rin-chapter { top: 4.5rem; font-size: 10px; letter-spacing: 0.25em; }
-  .rin-chapter__divider { width: 16px; }
-}
-
 /* ===== Mobile base ===== */
 html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 

@@ -1,6 +1,5 @@
 import { useRef } from 'react'
 import { motion } from 'framer-motion'
-import ChapterMarker from '../components/ChapterMarker'
 
 export default function Scene01Hero() {
   const sectionRef = useRef(null)
@@ -26,9 +25,7 @@ export default function Scene01Hero() {
         position: 'relative',
         overflow: 'hidden',
       }}
-    >
-      <ChapterMarker n={1} label="Intro" />
-      <motion.div
+    >      <motion.div
         className="scene-content"
         variants={container}
         initial="hidden"

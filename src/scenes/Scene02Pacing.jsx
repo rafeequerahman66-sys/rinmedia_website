@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import RetroCameraCanvas from '../components/RetroCameraCanvas'
-import ChapterMarker from '../components/ChapterMarker'
 
 export default function Scene02Pacing() {
   const sectionRef = useRef(null)
@@ -75,7 +74,6 @@ export default function Scene02Pacing() {
         position: 'relative',
       }}
     >
-      <ChapterMarker n={2} label="Pacing" />
       <RetroCameraCanvas scrollProgressRef={scrollProgressRef} />
 
       <span ref={line1Ref} style={textStyle}>

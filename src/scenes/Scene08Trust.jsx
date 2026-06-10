@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import brandLogos from 'virtual:brand-logos'
-import ChapterMarker from '../components/ChapterMarker'
 
 const IMG = {
   flapEvent: '/images/trust/flap-event.jpg',
@@ -656,7 +655,6 @@ export default function Scene08Trust() {
         position: 'relative',
       }}
     >
-      <ChapterMarker n={8} label="Clients" />
       <Header />
       <ActHero />
       <ActSecondary />

@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import ChapterMarker from '../components/ChapterMarker'
 
 const PROJECTS = [
   {
@@ -231,7 +230,6 @@ function ProjectItem({ project, index }) {
 export default function Scene07Work() {
   return (
     <section id="scene-07" style={{ background: '#000', width: '100%' }}>
-      <ChapterMarker n={7} label="Work" />
       <div style={{ padding: '10vh 8vw 6vh' }}>
         <motion.p
           initial={{ opacity: 0, y: 20 }}

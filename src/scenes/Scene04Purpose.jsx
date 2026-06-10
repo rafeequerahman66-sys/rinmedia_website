@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import RetroCameraCanvas from '../components/RetroCameraCanvas'
-import ChapterMarker from '../components/ChapterMarker'
 
 const LINES = [
   'Through cinematic storytelling.',
@@ -77,7 +76,6 @@ export default function Scene04Purpose() {
         position: 'relative',
       }}
     >
-      <ChapterMarker n={4} label="Purpose" />
       <RetroCameraCanvas
         scrollProgressRef={scrollProgressRef}
         modelPath="/models/retro-computer.glb"
