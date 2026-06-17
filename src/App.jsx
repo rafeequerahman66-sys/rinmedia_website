@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import Lenis from 'lenis'
 import Navbar from './components/Navbar'
 import SiteLoader from './components/SiteLoader'
-import CustomCursor from './components/CustomCursor'
+import SmoothCursor from './components/SmoothCursor'
 import ScrollProgress from './components/ScrollProgress'
 import Footer from './components/Footer'
 import SectionHero from './sections/SectionHero'
@@ -77,7 +77,7 @@ export default function App() {
   return (
     <div style={{ background: 'var(--bg)', color: 'var(--text-1)', fontFamily: 'var(--font-body)' }}>
       <SiteLoader />
-      <CustomCursor />
+      <SmoothCursor />
       <ScrollProgress />
       <Navbar lenisRef={lenisRef} />
       <main>

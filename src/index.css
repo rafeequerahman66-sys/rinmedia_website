@@ -617,37 +617,71 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 }
 
 /* ===== Testimonials (react-tweet) ===== */
-.rin-tweet-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
-  max-width: 1180px;
-  margin: 0 auto;
+.rin-tweet-marquee {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* full-bleed past the section's 8vw padding */
+  margin-left: -8vw;
+  margin-right: -8vw;
+  padding: 14px 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
 }
-@media (max-width: 1024px) {
-  .rin-tweet-grid { grid-template-columns: repeat(2, 1fr); }
+.rin-tweet-row {
+  display: flex;
+  overflow: visible;
 }
-@media (max-width: 720px) {
-  .rin-tweet-grid { grid-template-columns: 1fr; }
+.rin-tweet-row__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+.rin-tweet-row__track--left  { animation: rinTweetLeft 60s linear infinite; }
+.rin-tweet-row__track--right { animation: rinTweetRight 55s linear infinite; }
+.rin-tweet-row:hover .rin-tweet-row__track { animation-play-state: paused; }
+@keyframes rinTweetLeft {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes rinTweetRight {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
 }
 .rin-tweet {
   position: relative;
+  flex: 0 0 auto;
+  width: 360px;
+  height: 420px;
+  margin-right: 28px;
   background: var(--bg-2);
   border: 1px solid var(--hairline);
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
-  height: 520px;
-  transition: border-color 0.4s var(--ease-cinematic), transform 0.4s var(--ease-cinematic);
+  font-size: 0.88rem;
+  transition: border-color 0.4s var(--ease-cinematic),
+              transform 0.4s var(--ease-cinematic),
+              box-shadow 0.4s var(--ease-cinematic);
 }
 .rin-tweet:hover {
   border-color: var(--lime-line);
-  transform: translateY(-2px);
+  transform: scale(1.03);
+  box-shadow: 0 14px 44px rgba(0, 0, 0, 0.5), 0 0 24px var(--lime-soft);
+  z-index: 2;
+}
+@media (max-width: 900px) {
+  .rin-tweet { width: 300px; height: 380px; margin-right: 24px; }
+}
+@media (max-width: 540px) {
+  .rin-tweet { width: 82vw; max-width: 320px; height: 360px; margin-right: 16px; }
 }
 .rin-tweet::after {
   content: '';
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 80px;
+  height: 64px;
   background: linear-gradient(to bottom, transparent, var(--bg-2));
   pointer-events: none;
 }
@@ -851,6 +885,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 /* ===== Reduced motion ===== */
 @media (prefers-reduced-motion: reduce) {
-  .rin-marquee__track, .rin-hero__star, .rin-hero__glow, .rin-contact__glow { animation: none !important; }
+  .rin-marquee__track, .rin-tweet-row__track, .rin-hero__star, .rin-hero__glow, .rin-contact__glow { animation: none !important; }
   [data-reveal] { opacity: 1; transform: none; transition: none; }
 }
