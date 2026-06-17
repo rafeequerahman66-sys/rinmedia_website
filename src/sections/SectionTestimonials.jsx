@@ -16,6 +16,7 @@ const TWEET_IDS = [
   '2010703714420453411', // @rinmedia_xyz
   '1937542503286341977', // @Atlantis_p2p
   '2054150944485720100', // @deepansh_see
+  '1993318811655930113', // @kochuBigaran
 ]
 
 // Split across two rows that scroll in opposite directions
