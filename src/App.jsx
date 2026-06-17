@@ -1,72 +1,95 @@
 import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Lenis from 'lenis'
 import Navbar from './components/Navbar'
 import SiteLoader from './components/SiteLoader'
 import CustomCursor from './components/CustomCursor'
 import ScrollProgress from './components/ScrollProgress'
 import Footer from './components/Footer'
-import Scene01Hero from './scenes/Scene01Hero'
-import Scene02Pacing from './scenes/Scene02Pacing'
-import Scene03Transition from './scenes/Scene03Transition'
-import Scene04Purpose from './scenes/Scene04Purpose'
-import Scene05Reveal from './scenes/Scene05Reveal'
-import Scene06Capabilities from './scenes/Scene06Capabilities'
-import Scene07Work from './scenes/Scene07Work'
-import Scene08Trust from './scenes/Scene08Trust'
-import Scene09Positioning from './scenes/Scene09Positioning'
-import Scene10Results from './scenes/Scene10Results'
-import Scene11CTA from './scenes/Scene11CTA'
-
-gsap.registerPlugin(ScrollTrigger)
+import SectionHero from './sections/SectionHero'
+import SectionHow from './sections/SectionHow'
+import SectionWorks from './sections/SectionWorks'
+import SectionTestimonials from './sections/SectionTestimonials'
+import SectionCapabilities from './sections/SectionCapabilities'
+import SectionSubscription from './sections/SectionSubscription'
+import SectionStats from './sections/SectionStats'
+import SectionContact from './sections/SectionContact'
 
 export default function App() {
   const lenisRef = useRef(null)
 
   useEffect(() => {
-    // Kill browser scroll restoration so pinned scenes don't jump
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual'
     window.scrollTo(0, 0)
 
     const lenis = new Lenis({
-      duration: 1.4,
+      duration: 1.3,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      wheelMultiplier: 0.85,
+      wheelMultiplier: 0.9,
       smoothWheel: true,
     })
     lenisRef.current = lenis
 
-    lenis.on('scroll', ScrollTrigger.update)
-
-    const tick = (time) => lenis.raf(time * 1000)
-    gsap.ticker.add(tick)
-    gsap.ticker.lagSmoothing(0)
+    let raf
+    const tick = (t) => {
+      lenis.raf(t)
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
 
     return () => {
-      gsap.ticker.remove(tick)
+      cancelAnimationFrame(raf)
       lenis.destroy()
-      ScrollTrigger.getAll().forEach(t => t.kill())
+    }
+  }, [])
+
+  // Reveal-on-scroll for [data-reveal] elements
+  useEffect(() => {
+    const els = Array.from(document.querySelectorAll('[data-reveal]'))
+    if (!els.length) return
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible')
+            io.unobserve(entry.target)
+          }
+        })
+      },
+      { rootMargin: '0px 0px -10% 0px', threshold: 0.05 }
+    )
+    els.forEach((el) => io.observe(el))
+
+    // Re-observe new nodes added after mount
+    const mo = new MutationObserver(() => {
+      document.querySelectorAll('[data-reveal]:not(.is-visible)').forEach((el) => {
+        io.observe(el)
+      })
+    })
+    mo.observe(document.body, { childList: true, subtree: true })
+
+    return () => {
+      io.disconnect()
+      mo.disconnect()
     }
   }, [])
 
   return (
-    <div style={{ background: '#000', color: '#fff', fontFamily: "'Satoshi', 'Outfit', sans-serif" }}>
+    <div style={{ background: 'var(--bg)', color: 'var(--text-1)', fontFamily: 'var(--font-body)' }}>
       <SiteLoader />
       <CustomCursor />
       <ScrollProgress />
       <Navbar lenisRef={lenisRef} />
-      <Scene01Hero />
-      <Scene02Pacing />
-      <Scene03Transition />
-      <Scene04Purpose />
-      <Scene05Reveal />
-      <Scene06Capabilities />
-      <Scene07Work />
-      <Scene08Trust />
-      <Scene09Positioning />
-      <Scene10Results />
-      <Scene11CTA />
+      <main>
+        <SectionHero />
+        <SectionHow />
+        <SectionWorks />
+        <SectionTestimonials />
+        <SectionCapabilities />
+        <SectionSubscription />
+        <SectionStats />
+        <SectionContact />
+      </main>
       <Footer />
     </div>
   )

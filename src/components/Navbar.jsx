@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const NAV_ITEMS = [
-  { label: 'Work', id: 'scene-07' },
-  { label: 'Services', id: 'scene-06' },
-  { label: 'About', id: 'scene-05' },
-  { label: 'Contact', id: 'scene-11' },
+  { label: 'Process', id: 'how' },
+  { label: 'Services', id: 'capabilities' },
+  { label: 'Portfolio', id: 'works' },
+  { label: 'Pricing', id: 'subscription' },
 ]
 
 export default function Navbar({ lenisRef }) {
@@ -13,12 +13,12 @@ export default function Navbar({ lenisRef }) {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 60)
-    window.addEventListener('scroll', handleScroll, { passive: true })
-    return () => window.removeEventListener('scroll', handleScroll)
+    const handle = () => setScrolled(window.scrollY > 40)
+    handle()
+    window.addEventListener('scroll', handle, { passive: true })
+    return () => window.removeEventListener('scroll', handle)
   }, [])
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden'
@@ -27,134 +27,66 @@ export default function Navbar({ lenisRef }) {
       document.body.style.overflow = ''
       lenisRef?.current?.start?.()
     }
-    return () => {
-      document.body.style.overflow = ''
-    }
+    return () => { document.body.style.overflow = '' }
   }, [open, lenisRef])
 
   const scrollTo = (id) => {
     setOpen(false)
-    // Wait a tick so body unlocks before lenis scroll runs
     requestAnimationFrame(() => {
       const el = document.getElementById(id)
-      if (el && lenisRef?.current) {
-        lenisRef.current.scrollTo(el, { offset: -80, duration: 1.6 })
+      if (!el) return
+      if (lenisRef?.current) {
+        lenisRef.current.scrollTo(el, { offset: -90, duration: 1.4 })
+      } else {
+        el.scrollIntoView({ behavior: 'smooth' })
       }
     })
   }
 
+  const scrollToTop = () => {
+    setOpen(false)
+    if (lenisRef?.current) lenisRef.current.scrollTo(0, { duration: 1.4 })
+    else window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
   return (
     <>
-      <style>{`
-        .rin-nav-links { display: flex; gap: 2.5rem; align-items: center; }
-        .rin-nav-burger { display: none; }
-        @media (max-width: 720px) {
-          .rin-nav-links { display: none; }
-          .rin-nav-burger { display: flex; }
-        }
-        .rin-nav-link {
-          background: none; border: none; color: rgba(255,255,255,0.6);
-          font-size: 0.8rem; font-family: 'Outfit', sans-serif; font-weight: 400;
-          text-transform: uppercase; letter-spacing: 0.12em;
-          cursor: pointer; padding: 0;
-          transition: color 0.3s ease;
-        }
-        .rin-nav-link:hover { color: #fff; }
-      `}</style>
-
-      <motion.nav
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          zIndex: 1000,
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          padding: scrolled ? '1rem 5vw' : '1.5rem 5vw',
-          background: scrolled || open ? 'rgba(0,0,0,0.6)' : 'transparent',
-          backdropFilter: scrolled || open ? 'blur(20px)' : 'none',
-          WebkitBackdropFilter: scrolled || open ? 'blur(20px)' : 'none',
-          borderBottom: scrolled ? '1px solid rgba(255,255,255,0.04)' : 'none',
-          transition: 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)',
-        }}
-      >
-        <span
-          style={{
-            fontWeight: 900,
-            fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
-            letterSpacing: '0.15em',
-            color: '#fff',
-            cursor: 'pointer',
-            textTransform: 'uppercase',
-          }}
-          onClick={() => {
-            setOpen(false)
-            lenisRef?.current?.scrollTo(0, { duration: 1.6 })
-          }}
+      <div className="rin-nav-wrap">
+        <motion.nav
+          initial={{ opacity: 0, y: -16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          className={`rin-nav ${scrolled ? 'rin-nav--scrolled' : ''}`}
         >
-          RIN MEDIA
-        </span>
+          <button className="rin-nav__brand" onClick={scrollToTop} aria-label="Rin Media — home">
+            <span className="rin-nav__dot" />
+            <span>Rin Media</span>
+          </button>
 
-        {/* Desktop links */}
-        <div className="rin-nav-links">
-          {NAV_ITEMS.map(({ label, id }) => (
-            <button key={label} onClick={() => scrollTo(id)} className="rin-nav-link">
-              {label}
-            </button>
-          ))}
-        </div>
+          <div className="rin-nav__links">
+            {NAV_ITEMS.map(({ label, id }) => (
+              <button key={id} className="rin-nav__link" onClick={() => scrollTo(id)}>
+                {label}
+              </button>
+            ))}
+          </div>
 
-        {/* Mobile burger button */}
-        <button
-          className="rin-nav-burger"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          onClick={() => setOpen(o => !o)}
-          style={{
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            width: '32px',
-            height: '32px',
-            padding: 0,
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '6px',
-            zIndex: 1001,
-          }}
-        >
-          <span
-            style={{
-              display: 'block',
-              width: '22px',
-              height: '1.5px',
-              background: '#fff',
-              transition: 'transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.3s',
-              transform: open ? 'translateY(4px) rotate(45deg)' : 'none',
-              transformOrigin: 'center',
-            }}
-          />
-          <span
-            style={{
-              display: 'block',
-              width: '22px',
-              height: '1.5px',
-              background: '#fff',
-              transition: 'transform 0.4s cubic-bezier(0.22,1,0.36,1), opacity 0.3s',
-              transform: open ? 'translateY(-3.5px) rotate(-45deg)' : 'none',
-              transformOrigin: 'center',
-            }}
-          />
-        </button>
-      </motion.nav>
+          <button className="rin-nav__cta" onClick={() => scrollTo('contact')}>Get Started</button>
 
-      {/* Mobile full-screen menu */}
+          <button
+            className="rin-nav__burger"
+            aria-label={open ? 'Close menu' : 'Open menu'}
+            aria-expanded={open}
+            onClick={() => setOpen(o => !o)}
+          >
+            <span style={{ width: 16, height: 1.5, background: 'var(--ink)', display: 'block', position: 'relative' }}>
+              <span style={{ position: 'absolute', left: 0, top: -5, width: 16, height: 1.5, background: 'var(--ink)' }} />
+              <span style={{ position: 'absolute', left: 0, top: 5, width: 16, height: 1.5, background: 'var(--ink)' }} />
+            </span>
+          </button>
+        </motion.nav>
+      </div>
+
       <AnimatePresence>
         {open && (
           <motion.div
@@ -162,12 +94,12 @@ export default function Navbar({ lenisRef }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             style={{
               position: 'fixed',
               inset: 0,
               zIndex: 999,
-              background: 'rgba(0,0,0,0.96)',
+              background: 'rgba(8, 12, 5, 0.96)',
               backdropFilter: 'blur(24px)',
               WebkitBackdropFilter: 'blur(24px)',
               display: 'flex',
@@ -180,20 +112,19 @@ export default function Navbar({ lenisRef }) {
           >
             {NAV_ITEMS.map(({ label, id }, i) => (
               <motion.button
-                key={label}
+                key={id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.1 + i * 0.07 }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: 0.08 + i * 0.06 }}
                 onClick={() => scrollTo(id)}
                 style={{
                   background: 'none',
                   border: 'none',
                   color: '#fff',
                   fontSize: 'clamp(2rem, 8vw, 3rem)',
-                  fontFamily: "'Outfit', sans-serif",
-                  fontWeight: 700,
+                  fontFamily: 'Clash Display, sans-serif',
+                  fontWeight: 600,
                   letterSpacing: '-0.02em',
-                  textTransform: 'uppercase',
                   cursor: 'pointer',
                   padding: '0.5rem 1rem',
                 }}
@@ -201,6 +132,16 @@ export default function Navbar({ lenisRef }) {
                 {label}
               </motion.button>
             ))}
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.08 + NAV_ITEMS.length * 0.06 }}
+              onClick={() => scrollTo('contact')}
+              className="rin-btn rin-btn--lime"
+              style={{ marginTop: '1rem' }}
+            >
+              Get Started
+            </motion.button>
           </motion.div>
         )}
       </AnimatePresence>

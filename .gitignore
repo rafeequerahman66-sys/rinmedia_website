@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Abandoned Next.js scaffold — local-only
+next-app/
+
 # Secrets — never commit
 .env
 .env.local
