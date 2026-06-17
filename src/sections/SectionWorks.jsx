@@ -2,6 +2,7 @@ import { useState } from 'react'
 
 const ITEMS = [
   { src: '/images/trust/Nova Residency - Launch day (14).jpg',  alt: 'Nova Residency — launch day' },
+  { src: '/images/trust/demo day.JPG',                          alt: 'Demo day at Zo House' },
   { src: '/images/trust/bybit-booth.jpg',                       alt: 'ByBit booth activation' },
   { src: '/images/trust/founder-chat.jpg',                      alt: 'Founder interview' },
   { src: '/images/trust/monad-blitz.jpg',                       alt: 'Monad Blitz hackathon' },
