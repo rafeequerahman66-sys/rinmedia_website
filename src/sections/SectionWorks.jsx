@@ -48,7 +48,7 @@ export default function SectionWorks() {
               style={{ display: isHidden ? 'none' : 'block' }}
               data-reveal
             >
-              <img src={item.src} alt={item.alt} loading="lazy" draggable="false" />
+              <img src={item.src} alt={item.alt} loading="lazy" decoding="async" draggable="false" />
             </a>
           )
         })}
