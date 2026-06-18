@@ -202,47 +202,127 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   will-change: transform;
 }
 
-/* ===== Site loader ===== */
+/* ===== Site loader (READY · SET · GO) ===== */
 .rin-loader {
   position: fixed;
   inset: 0;
   z-index: 10000;
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 50%, #0c1206 0%, #060804 55%, #040503 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
+  overflow: hidden;
   font-family: var(--font-body);
-  transition: opacity 0.8s var(--ease-cinematic),
-              visibility 0.8s var(--ease-cinematic);
+  transition: opacity 0.7s var(--ease-cinematic),
+              visibility 0.7s var(--ease-cinematic);
 }
 .rin-loader--done {
   opacity: 0;
   visibility: hidden;
 }
+/* Cinematic grain + glow overlays */
+.rin-loader__grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.rin-loader__glow {
+  position: absolute;
+  left: 50%;
+  top: 52%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vw;
+  max-width: 720px;
+  max-height: 720px;
+  background: radial-gradient(circle, rgba(168, 230, 12, 0.16) 0%, transparent 60%);
+  filter: blur(24px);
+  pointer-events: none;
+  animation: rinGlow 6s ease-in-out infinite;
+}
+/* Top: brand mark */
+.rin-loader__top {
+  position: absolute;
+  top: 8vh;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
 .rin-loader__mark {
   font-family: var(--font-display);
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
   font-size: 1rem;
   color: var(--text-1);
   text-transform: uppercase;
 }
-.rin-loader__count {
+.rin-loader__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 16px var(--lime-glow);
+}
+/* Center: READY / SET / GO sequence */
+.rin-loader__seq {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.92;
+}
+.rin-loader__word {
+  display: block;
   font-family: var(--font-display);
+  text-transform: uppercase;
+  will-change: transform, opacity, filter;
+}
+.rin-loader__word--ready {
   font-weight: 600;
-  font-size: clamp(3rem, 9vw, 7rem);
-  letter-spacing: -0.04em;
+  font-size: clamp(1.4rem, 5vw, 2.6rem);
+  letter-spacing: 0.16em;
+  color: var(--text-1);
+  margin-bottom: 0.3rem;
+}
+.rin-loader__word--set {
+  font-weight: 600;
+  font-size: clamp(1.9rem, 7vw, 3.6rem);
+  letter-spacing: 0.1em;
   color: var(--lime);
-  line-height: 1;
-  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.1rem;
+}
+.rin-loader__word--go {
+  font-weight: 700;
+  font-size: clamp(5rem, 24vw, 13rem);
+  letter-spacing: -0.03em;
+  color: var(--lime);
+  text-shadow: 0 0 48px var(--lime-glow);
+}
+/* Bottom: progress bar + caption */
+.rin-loader__foot {
+  position: absolute;
+  bottom: 8vh;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  z-index: 2;
 }
 .rin-loader__status {
   font-size: 11px;
-  letter-spacing: 0.32em;
+  letter-spacing: 0.42em;
   text-transform: uppercase;
-  color: var(--text-4);
+  color: var(--text-3);
 }
 .rin-loader__bar {
   width: clamp(180px, 26vw, 280px);
@@ -255,9 +335,13 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   position: absolute;
   inset: 0;
   background: var(--lime);
+  box-shadow: 0 0 12px var(--lime-glow);
   transform-origin: left center;
   transform: scaleX(0);
-  transition: transform 0.15s linear;
+  transition: transform 0.12s linear;
+}
+@media (prefers-reduced-motion: reduce) {
+  .rin-loader__glow { animation: none; }
 }
 
 /* ===== Nav (floating glass pill) ===== */
