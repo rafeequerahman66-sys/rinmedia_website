@@ -299,12 +299,36 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   color: var(--lime);
   margin-bottom: 0.1rem;
 }
-.rin-loader__word--go {
+.rin-loader__word--create {
   font-weight: 700;
-  font-size: clamp(5rem, 24vw, 13rem);
-  letter-spacing: -0.03em;
+  font-size: clamp(3rem, 17vw, 11rem);
+  letter-spacing: -0.035em;
   color: var(--lime);
   text-shadow: 0 0 48px var(--lime-glow);
+}
+.rin-loader__word--create.is-pulsing {
+  animation: rinCreatePulse 1.4s ease-in-out infinite;
+}
+@keyframes rinCreatePulse {
+  0%, 100% { text-shadow: 0 0 36px var(--lime-glow); }
+  50%      { text-shadow: 0 0 72px var(--lime-glow), 0 0 120px var(--lime-soft); }
+}
+/* Quick flash transition into content */
+.rin-loader__flash {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: var(--lime);
+  opacity: 0;
+  pointer-events: none;
+}
+.rin-loader__flash.is-flashing {
+  animation: rinLoaderFlash 0.32s ease-out forwards;
+}
+@keyframes rinLoaderFlash {
+  0%   { opacity: 0; }
+  35%  { opacity: 0.9; }
+  100% { opacity: 0; }
 }
 /* Bottom: progress bar + caption */
 .rin-loader__foot {

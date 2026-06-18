@@ -3,12 +3,13 @@ import { motion } from 'framer-motion'
 
 export default function SiteLoader() {
   const [progress, setProgress] = useState(0) // 0 → 1
+  const [flashing, setFlashing] = useState(false)
   const [done, setDone] = useState(false)
 
   useEffect(() => {
     let raf
     let start = null
-    const total = 2400 // ms — tuned for a ~3s reel-intro cadence
+    const total = 2900 // ms — ~3s reel-intro cadence
 
     const step = (t) => {
       if (start === null) start = t
@@ -17,7 +18,9 @@ export default function SiteLoader() {
       if (p < 1) {
         raf = requestAnimationFrame(step)
       } else {
-        setTimeout(() => setDone(true), 420)
+        // Quick flash, then fade into content
+        setFlashing(true)
+        setTimeout(() => setDone(true), 300)
       }
     }
     raf = requestAnimationFrame(step)
@@ -25,17 +28,23 @@ export default function SiteLoader() {
   }, [])
 
   // Staggered reveal points along the progress timeline
-  const showReady = progress >= 0.06
-  const showSet = progress >= 0.34
-  const showGo = progress >= 0.6
+  const showReady = progress >= 0.05
+  const showSet = progress >= 0.32
+  const showCreate = progress >= 0.56
+  // glow pulse kicks in once CREATE has settled
+  const pulsing = progress >= 0.78
 
-  const wordIn = {
-    hidden: { opacity: 0, y: 26, filter: 'blur(8px)' },
-    show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+  const readyIn = {
+    hidden: { opacity: 0, scale: 0.8, filter: 'blur(6px)' },
+    show: { opacity: 1, scale: 1, filter: 'blur(0px)', transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
   }
-  const goIn = {
-    hidden: { opacity: 0, scale: 0.55, filter: 'blur(16px)' },
-    show: { opacity: 1, scale: 1, filter: 'blur(0px)', transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] } },
+  const setIn = {
+    hidden: { opacity: 0, y: 48, filter: 'blur(12px)' },
+    show: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } },
+  }
+  const createIn = {
+    hidden: { opacity: 0, scale: 0.4, filter: 'blur(18px)' },
+    show: { opacity: 1, scale: 1, filter: 'blur(0px)', transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] } },
   }
 
   return (
@@ -55,27 +64,27 @@ export default function SiteLoader() {
       <div className="rin-loader__seq">
         <motion.span
           className="rin-loader__word rin-loader__word--ready"
-          variants={wordIn}
+          variants={readyIn}
           initial="hidden"
           animate={showReady ? 'show' : 'hidden'}
         >
-          Ready
+          Ready.
         </motion.span>
         <motion.span
           className="rin-loader__word rin-loader__word--set"
-          variants={wordIn}
+          variants={setIn}
           initial="hidden"
           animate={showSet ? 'show' : 'hidden'}
         >
-          Set
+          Set.
         </motion.span>
         <motion.span
-          className="rin-loader__word rin-loader__word--go"
-          variants={goIn}
+          className={`rin-loader__word rin-loader__word--create ${pulsing ? 'is-pulsing' : ''}`}
+          variants={createIn}
           initial="hidden"
-          animate={showGo ? 'show' : 'hidden'}
+          animate={showCreate ? 'show' : 'hidden'}
         >
-          Go
+          Create.
         </motion.span>
       </div>
 
@@ -83,8 +92,10 @@ export default function SiteLoader() {
         <div className="rin-loader__bar">
           <div className="rin-loader__bar-fill" style={{ transform: `scaleX(${progress})` }} />
         </div>
-        <div className="rin-loader__status">The reel is ready</div>
+        <div className="rin-loader__status">Turning moments into stories</div>
       </div>
+
+      <div className={`rin-loader__flash ${flashing ? 'is-flashing' : ''}`} aria-hidden />
     </div>
   )
 }
