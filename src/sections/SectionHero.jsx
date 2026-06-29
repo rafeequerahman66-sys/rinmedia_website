@@ -62,7 +62,14 @@ export default function SectionHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.5 }}
         >
-          <a className="rin-btn rin-btn--lime" href="#contact">Book a Meeting</a>
+          <a
+            className="rin-btn rin-btn--lime"
+            href="https://calendly.com/rafeequerahman66/30min"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Book a Meeting
+          </a>
           <a className="rin-btn rin-btn--outline" href="#works">View Our Work</a>
         </motion.div>
 
