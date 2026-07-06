@@ -6,6 +6,11 @@ const ITEMS = [
   { src: '/images/trust/OCU_0778.JPG',                          alt: 'Speaker at a Rin Media event' },
   { src: '/images/trust/DSC05073.jpg',                          alt: 'Monad Blitz group photo' },
   { src: '/images/trust/DSC06731.jpg',                          alt: 'ByBit catering' },
+  { src: '/images/trust/cai-breakout-discussion.jpg',           alt: 'Consumer AI Breakout — candid discussion' },
+  { src: '/images/trust/cai-breakout-speaker.jpg',              alt: 'Consumer AI Breakout — speaker' },
+  { src: '/images/trust/cai-breakout-listener.jpg',             alt: 'Consumer AI Breakout — engaged audience' },
+  { src: '/images/trust/cai-breakout-conversation.jpg',         alt: 'Consumer AI Breakout — conversation' },
+  { src: '/images/trust/cai-breakout-colorgame.jpg',            alt: 'Consumer AI Breakout — colour game' },
   { src: '/images/trust/bybit-booth.jpg',                       alt: 'ByBit booth activation' },
   { src: '/images/trust/founder-chat.jpg',                      alt: 'Founder interview' },
   { src: '/images/trust/monad-blitz.jpg',                       alt: 'Monad Blitz hackathon' },
@@ -20,7 +25,7 @@ const ITEMS = [
   { src: '/images/trust/tech-candid.jpg',                       alt: 'Tech candid' },
 ]
 
-const VISIBLE_COUNT = 8
+const VISIBLE_COUNT = 13
 
 export default function SectionWorks() {
   const [expanded, setExpanded] = useState(false)
