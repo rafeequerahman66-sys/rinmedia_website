@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 const ITEMS = [
   { src: '/images/trust/Nova Residency - Launch day (14).jpg',  alt: 'Nova Residency — launch day' },
   { src: '/images/trust/demo day.JPG',                          alt: 'Demo day at Zo House' },
@@ -19,19 +17,35 @@ const ITEMS = [
   { src: '/images/trust/bybit-cheers.jpg',                      alt: 'ByBit cheers' },
   { src: '/images/trust/flap-event.jpg',                        alt: 'FLAP event' },
   { src: '/images/trust/founders-meetup.jpg',                   alt: 'Founders meetup' },
-  // hidden by default
   { src: '/images/trust/couch-talk.jpg',                        alt: 'Couch interview' },
   { src: '/images/trust/bybit-card.jpg',                        alt: 'ByBit card' },
   { src: '/images/trust/tech-candid.jpg',                       alt: 'Tech candid' },
 ]
 
-const VISIBLE_COUNT = 13
+// Split across two rows scrolling in opposite directions
+const MID = Math.ceil(ITEMS.length / 2)
+const ROW_TOP = ITEMS.slice(0, MID)
+const ROW_BOTTOM = ITEMS.slice(MID)
+
+function MarqueeRow({ items, direction }) {
+  // Duplicate the set so the -50% loop is seamless
+  const doubled = [...items, ...items]
+  return (
+    <div className="rin-works-row">
+      <div className={`rin-works-row__track rin-works-row__track--${direction}`}>
+        {doubled.map((item, i) => (
+          <div className="rin-works-card" key={`${item.src}-${i}`} aria-hidden={i >= items.length}>
+            <img src={item.src} alt={item.alt} loading="lazy" decoding="async" draggable="false" />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export default function SectionWorks() {
-  const [expanded, setExpanded] = useState(false)
-
   return (
-    <section id="works" className="rin-section">
+    <section id="works" className="rin-section rin-section--narrow">
       <div className="rin-works__head" data-reveal>
         <p className="rin-eyebrow" style={{ marginBottom: '1rem' }}>Our work</p>
         <h2 className="rin-h2">Snaps from our beautiful works</h2>
@@ -40,32 +54,10 @@ export default function SectionWorks() {
         </p>
       </div>
 
-      <div className="rin-works__grid">
-        {ITEMS.map((item, i) => {
-          const isHidden = i >= VISIBLE_COUNT && !expanded
-          return (
-            <a
-              key={item.src}
-              className="rin-works__item"
-              href={item.src}
-              target="_blank"
-              rel="noreferrer"
-              style={{ display: isHidden ? 'none' : 'block' }}
-              data-reveal
-            >
-              <img src={item.src} alt={item.alt} loading="lazy" decoding="async" draggable="false" />
-            </a>
-          )
-        })}
+      <div className="rin-works-marquee">
+        <MarqueeRow items={ROW_TOP} direction="right" />
+        <MarqueeRow items={ROW_BOTTOM} direction="left" />
       </div>
-
-      {!expanded && ITEMS.length > VISIBLE_COUNT && (
-        <div className="rin-works__more">
-          <button className="rin-btn rin-btn--outline" onClick={() => setExpanded(true)}>
-            Load More
-          </button>
-        </div>
-      )}
     </section>
   )
 }
