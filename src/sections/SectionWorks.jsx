@@ -64,9 +64,9 @@ export default function SectionWorks() {
       </div>
 
       <div className="rin-works-marquee">
-        <MarqueeRow items={ROW_1} direction="right" duration={42} />
-        <MarqueeRow items={ROW_2} direction="left" duration={48} />
-        <MarqueeRow items={ROW_3} direction="right" duration={54} />
+        <MarqueeRow items={ROW_1} direction="right" duration={32} />
+        <MarqueeRow items={ROW_2} direction="left" duration={37} />
+        <MarqueeRow items={ROW_3} direction="right" duration={42} />
       </div>
     </section>
   )
