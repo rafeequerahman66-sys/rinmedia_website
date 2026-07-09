@@ -11,7 +11,9 @@ export default function SectionContact() {
         <div className="rin-contact__ctas">
           <a
             className="rin-btn rin-btn--lime"
-            href="mailto:rinmedia.xyz@gmail.com?subject=Book%20an%20intro%20call%20%E2%80%94%20RIN%20MEDIA"
+            href="https://calendly.com/rafeequerahman66/30min"
+            target="_blank"
+            rel="noreferrer"
           >
             Book a call ↗
           </a>
