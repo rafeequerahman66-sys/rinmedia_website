@@ -14,6 +14,8 @@ const ITEMS = [
   { src: '/images/trust/IMG_0153.JPEG',                         alt: 'Monad Blitz Pune — editing setup' },
   { src: '/images/trust/IMG_0159.JPEG',                         alt: 'Monad Blitz Pune — focused work' },
   { src: '/images/trust/IMG_0161.JPEG',                         alt: 'Monad Blitz Pune — building together' },
+  { src: '/images/trust/_DSC2101.jpg',                          alt: 'AI Infra Day — SGL x Sarvam x Hugging Face' },
+  { src: '/images/trust/_DSC2132.jpg',                          alt: 'AI Infra Day — team at the backdrop' },
   { src: '/images/trust/bybit-booth.jpg',                       alt: 'ByBit booth activation' },
   { src: '/images/trust/founder-chat.jpg',                      alt: 'Founder interview' },
   { src: '/images/trust/monad-blitz.jpg',                       alt: 'Monad Blitz hackathon' },

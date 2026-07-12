@@ -1,0 +1,12 @@
+<svg width="248" height="60" viewBox="0 0 248 60" xmlns="http://www.w3.org/2000/svg">
+  <!-- hands (separate path so they don't XOR the face) -->
+  <path fill="#000" d="M14,44 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 Z M38,44 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 Z" />
+  <!-- face with eye + mouth holes via evenodd -->
+  <path fill="#000" fill-rule="evenodd" d="
+    M11,29 a22,22 0 1,0 44,0 a22,22 0 1,0 -44,0 Z
+    M25,24 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0 Z
+    M39,24 a3,3 0 1,0 6,0 a3,3 0 1,0 -6,0 Z
+    M26,34 a7,4.5 0 1,0 14,0 a7,4.5 0 1,0 -14,0 Z
+  " />
+  <text x="72" y="39" font-family="'General Sans', system-ui, sans-serif" font-weight="600" font-size="27" fill="#000">Hugging Face</text>
+</svg>

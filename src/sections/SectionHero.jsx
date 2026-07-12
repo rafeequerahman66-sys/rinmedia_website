@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 const BRAND_LOGOS = [
   { src: '/brand-logos/nova.svg',          alt: 'Nova Residency' },
   { src: '/brand-logos/monad.svg',         alt: 'Monad' },
-  { src: '/brand-logos/sarvam.png',        alt: 'Sarvam',    scale: 2.2 },
-  { src: '/brand-logos/hugging-face.png',  alt: 'Hugging Face', scale: 1.7 },
+  { src: '/brand-logos/sarvam.png',        alt: 'Sarvam',    scale: 1.35 },
+  { src: '/brand-logos/hugging-face.svg',  alt: 'Hugging Face', scale: 1.5 },
   { src: '/brand-logos/bybit.png',         alt: 'ByBit' },
   { src: '/brand-logos/flap.png',          alt: 'FLAP',      scale: 2.6 },
   { src: '/brand-logos/boundless-vc.png',  alt: 'Boundless', scale: 2.6 },
