@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 const BRAND_LOGOS = [
   { src: '/brand-logos/nova.svg',          alt: 'Nova Residency' },
   { src: '/brand-logos/monad.svg',         alt: 'Monad' },
+  { src: '/brand-logos/sgl.png',           alt: 'SGL',       scale: 1.5 },
   { src: '/brand-logos/sarvam.png',        alt: 'Sarvam',    scale: 1.35 },
   { src: '/brand-logos/hugging-face.svg',  alt: 'Hugging Face', scale: 1.5 },
   { src: '/brand-logos/bybit.png',         alt: 'ByBit' },
