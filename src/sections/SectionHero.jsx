@@ -15,7 +15,7 @@ const BRAND_LOGOS = [
   { src: '/brand-logos/avalanche.svg',     alt: 'Avalanche' },
   { src: '/brand-logos/bnb-chain.svg',     alt: 'BNB Chain' },
   { src: '/brand-logos/starkware.svg',     alt: 'Starkware' },
-  { src: '/brand-logos/stellar.svg',       alt: 'Stellar' },
+  { src: '/brand-logos/stellar.png',       alt: 'Stellar' },
   { src: '/brand-logos/mudrex.webp',       alt: 'Mudrex' },
   { src: '/brand-logos/together-fund.svg', alt: 'Together Fund' },
   { src: '/brand-logos/pizza-dao.png',     alt: 'Pizza DAO' },
