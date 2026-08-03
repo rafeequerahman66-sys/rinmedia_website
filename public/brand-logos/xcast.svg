@@ -1,0 +1,18 @@
+<svg width="170" height="110" viewBox="0 0 170 110" xmlns="http://www.w3.org/2000/svg">
+  <!-- crossed bars forming the X -->
+  <g stroke="#ffffff" stroke-width="11" stroke-linecap="round" fill="none">
+    <path d="M30 26 L92 92"/>
+    <path d="M90 24 L36 88"/>
+  </g>
+  <!-- joint + end nodes -->
+  <circle cx="63" cy="58" r="7" fill="#ffffff"/>
+  <circle cx="91" cy="25" r="7" fill="#ffffff"/>
+  <circle cx="31" cy="27" r="6" fill="#ffffff"/>
+  <!-- C -->
+  <path d="M150 34 a30 30 0 1 0 0 44" stroke="#ffffff" stroke-width="11" fill="none" stroke-linecap="round"/>
+  <!-- wifi / broadcast waves off the top node -->
+  <g stroke="#ffffff" fill="none" stroke-linecap="round">
+    <path d="M103 18 a15 15 0 0 1 12 12" stroke-width="4"/>
+    <path d="M107 10 a24 24 0 0 1 20 20" stroke-width="4"/>
+  </g>
+</svg>

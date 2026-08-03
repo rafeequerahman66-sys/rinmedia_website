@@ -20,6 +20,8 @@ const BRAND_LOGOS = [
   { src: '/brand-logos/together-fund.svg', alt: 'Together Fund' },
   { src: '/brand-logos/pizza-dao.png',     alt: 'Pizza DAO' },
   { src: '/brand-logos/web3-kerala.png',   alt: 'Web3 Kerala' },
+  { src: '/brand-logos/easy-broker.svg',   alt: 'Easy Broker', scale: 1.6 },
+  { src: '/brand-logos/xcast.svg',         alt: 'XCast',     scale: 1.5, label: 'XCast' },
 ]
 
 function Star() {
@@ -86,7 +88,11 @@ export default function SectionHero() {
           <div className="rin-marquee">
             <div className="rin-marquee__track">
               {[...BRAND_LOGOS, ...BRAND_LOGOS].map((logo, i) => (
-                <div className="rin-marquee__item" key={i} aria-hidden={i >= BRAND_LOGOS.length}>
+                <div
+                  className={`rin-marquee__item${logo.label ? ' rin-marquee__item--labeled' : ''}`}
+                  key={i}
+                  aria-hidden={i >= BRAND_LOGOS.length}
+                >
                   <img
                     src={logo.src}
                     alt={logo.alt}
@@ -94,6 +100,7 @@ export default function SectionHero() {
                     draggable="false"
                     style={logo.scale ? { height: `${26 * logo.scale}px`, maxWidth: `${140 * logo.scale}px` } : undefined}
                   />
+                  {logo.label && <span className="rin-marquee__label">{logo.label}</span>}
                 </div>
               ))}
             </div>
