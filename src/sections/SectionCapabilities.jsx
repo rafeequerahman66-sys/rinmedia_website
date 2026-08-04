@@ -11,6 +11,8 @@ const TAGS = [
   'Aftermovies',
   'Launch Films',
   '3D Animation',
+  'UI/UX Design',
+  'Brand Design',
 ]
 
 export default function SectionCapabilities() {
