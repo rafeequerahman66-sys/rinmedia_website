@@ -2,7 +2,7 @@ const PLATFORMS = [
   {
     name: 'YouTube',
     mark: (
-      <svg viewBox="0 0 28 28" width="34" height="34" aria-hidden>
+      <svg viewBox="0 0 28 28" width="38" height="38" aria-hidden>
         <rect x="1" y="6" width="26" height="16" rx="5.2" fill="#FF0000" />
         <path d="M11.4 10.3v7.4l6.4-3.7z" fill="#fff" />
       </svg>
@@ -11,7 +11,7 @@ const PLATFORMS = [
   {
     name: 'Instagram',
     mark: (
-      <svg viewBox="0 0 28 28" width="34" height="34" aria-hidden>
+      <svg viewBox="0 0 28 28" width="38" height="38" aria-hidden>
         <defs>
           <linearGradient id="rinIg" x1="0" y1="1" x2="1" y2="0">
             <stop offset="0" stopColor="#FEDA75" />
@@ -29,7 +29,7 @@ const PLATFORMS = [
   {
     name: 'LinkedIn',
     mark: (
-      <svg viewBox="0 0 28 28" width="34" height="34" aria-hidden>
+      <svg viewBox="0 0 28 28" width="38" height="38" aria-hidden>
         <rect width="28" height="28" rx="6" fill="#0A66C2" />
         <circle cx="8.6" cy="8.8" r="1.95" fill="#fff" />
         <rect x="6.8" y="12" width="3.6" height="9.6" fill="#fff" />
@@ -40,7 +40,7 @@ const PLATFORMS = [
   {
     name: 'X',
     mark: (
-      <svg viewBox="0 0 28 28" width="34" height="34" aria-hidden>
+      <svg viewBox="0 0 28 28" width="38" height="38" aria-hidden>
         <path d="M16.5 12.4 24 4h-2.3l-6.1 6.9L10.8 4H4l7.9 11.2L4 24h2.3l6.5-7.3 5.1 7.3H24zM7.1 5.7h2.9l10 14.7h-2.9z" fill="#fff" />
       </svg>
     ),
@@ -48,7 +48,7 @@ const PLATFORMS = [
   {
     name: 'TikTok',
     mark: (
-      <svg viewBox="0 0 28 28" width="34" height="34" aria-hidden>
+      <svg viewBox="0 0 28 28" width="38" height="38" aria-hidden>
         <path d="M17.9 4.8c.3 2 1.7 3.6 3.7 3.9v3c-1.4 0-2.7-.4-3.7-1.1v5.1a5.3 5.3 0 1 1-5.3-5.3c.3 0 .6 0 .9.1v3.1a2.3 2.3 0 1 0 1.6 2.2V4.8z" fill="#25F4EE" transform="translate(-1.1 1)" />
         <path d="M17.9 4.8c.3 2 1.7 3.6 3.7 3.9v3c-1.4 0-2.7-.4-3.7-1.1v5.1a5.3 5.3 0 1 1-5.3-5.3c.3 0 .6 0 .9.1v3.1a2.3 2.3 0 1 0 1.6 2.2V4.8z" fill="#FE2C55" transform="translate(1.1 -0.4)" />
         <path d="M17.9 4.8c.3 2 1.7 3.6 3.7 3.9v3c-1.4 0-2.7-.4-3.7-1.1v5.1a5.3 5.3 0 1 1-5.3-5.3c.3 0 .6 0 .9.1v3.1a2.3 2.3 0 1 0 1.6 2.2V4.8z" fill="#fff" />
