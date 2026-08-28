@@ -530,12 +530,13 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   to { transform: rotate(360deg); }
 }
 .rin-hero__sub {
-  max-width: 46ch;
+  max-width: 54ch;
   margin: 1.6rem auto 2.6rem;
   font-family: var(--font-body);
   font-size: clamp(1rem, 1.4vw, 1.2rem);
   line-height: 1.65;
   color: var(--text-2);
+  text-wrap: balance;
 }
 .rin-hero__ctas {
   display: flex;
