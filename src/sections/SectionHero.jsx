@@ -35,19 +35,13 @@ function Star() {
 export default function SectionHero() {
   return (
     <section id="hero" className="rin-hero">
-      <video
-        className="rin-hero__video"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        poster="/videos/hero-bg-poster.jpg"
+      <img
+        className="rin-hero__img"
+        src="/hero-bg.png"
+        alt=""
         aria-hidden="true"
-        tabIndex={-1}
-      >
-        <source src="/videos/hero-bg.mp4" type="video/mp4" />
-      </video>
+        draggable="false"
+      />
       <div className="rin-hero__overlay" aria-hidden />
       <div className="rin-hero__glow" aria-hidden />
 

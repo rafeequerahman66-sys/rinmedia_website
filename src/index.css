@@ -471,25 +471,27 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   background: var(--hero-bg);
   overflow: hidden;
 }
-/* cinematic video background */
-.rin-hero__video {
+/* cinematic image background */
+.rin-hero__img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 55%;
   z-index: 0;
   pointer-events: none;
+  user-select: none;
 }
-/* readability overlay above the video */
+/* readability overlay above the background */
 .rin-hero__overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(8, 12, 5, 0.5) 0%, rgba(8, 12, 5, 0.32) 42%, rgba(8, 12, 5, 0.8) 100%),
-    radial-gradient(ellipse 78% 62% at 50% 42%, rgba(8, 12, 5, 0.12), rgba(8, 12, 5, 0.72));
+    linear-gradient(180deg, rgba(4, 6, 3, 0.62) 0%, rgba(4, 6, 3, 0.4) 42%, rgba(4, 6, 3, 0.82) 100%),
+    radial-gradient(ellipse 78% 62% at 50% 42%, rgba(4, 6, 3, 0.2), rgba(4, 6, 3, 0.7));
 }
 .rin-hero__glow {
   position: absolute;
@@ -505,9 +507,6 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   filter: blur(20px);
   pointer-events: none;
   animation: rinGlow 7s ease-in-out infinite;
-}
-@media (prefers-reduced-motion: reduce) {
-  .rin-hero__video { display: none; }
 }
 @keyframes rinGlow {
   0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
