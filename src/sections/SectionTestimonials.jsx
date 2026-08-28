@@ -19,6 +19,7 @@ const TWEET_IDS = [
   '1993318811655930113', // @kochuBigaran
   '2067637330090119333', // @kalamazooooo
   '2034223703765008801', // @BuildOnNodeOps
+  '2091895807523885524', // @prathadox
 ]
 
 // Split across two rows that scroll in opposite directions

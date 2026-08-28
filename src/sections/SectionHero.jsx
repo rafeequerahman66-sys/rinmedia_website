@@ -57,8 +57,9 @@ export default function SectionHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
         >
-          We build cinematic content and creative strategy that makes ambitious brands,
-          founders, and communities impossible to scroll past.
+          Rin Media is a creative production and distribution agency for technology companies.
+          We work with startups, founders, and ambitious tech teams to understand their story,
+          create content around it, and get it in front of the right audience.
         </motion.p>
 
         <motion.div
