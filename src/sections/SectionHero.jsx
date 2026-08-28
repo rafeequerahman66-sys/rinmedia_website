@@ -51,16 +51,20 @@ export default function SectionHero() {
           </span>
         </motion.h1>
 
-        <motion.p
+        <motion.div
           className="rin-hero__sub"
           initial={{ opacity: 0, y: 18 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.3 }}
         >
-          Rin Media is a creative production and distribution agency for technology companies.
-          We work with startups, founders, and ambitious tech teams to understand their story,
-          create content around it, and get it in front of the right audience.
-        </motion.p>
+          <span className="rin-hero__sub-line">
+            Rin Media is a creative production and distribution agency for technology companies.
+          </span>
+          <span className="rin-hero__sub-line">
+            We work with startups, founders, and ambitious tech teams to understand their story,
+            create content around it, and get it in front of the right audience.
+          </span>
+        </motion.div>
 
         <motion.div
           className="rin-hero__ctas"
