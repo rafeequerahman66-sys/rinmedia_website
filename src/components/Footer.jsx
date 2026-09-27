@@ -76,6 +76,19 @@ export default function Footer() {
               <a className="rin-footer__mail" href="https://www.rinmedia.xyz" target="_blank" rel="noreferrer" data-native>
                 www.rinmedia.xyz
               </a>
+              <a
+                href="https://www.refrens.com/free-accounting-software"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="Accounting Software Powered by Refrens"
+                className="rin-footer__refrens"
+              >
+                <img
+                  src="/Accounting-Software-Powered-by-Refrens.webp"
+                  alt="Accounting Software Powered by Refrens"
+                  className="rin-footer__refrens-image"
+                />
+              </a>
             </div>
           </div>
 

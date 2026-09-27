@@ -1288,6 +1288,22 @@ html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 .rin-footer__mail:hover { color: var(--lime); border-color: var(--lime-line); }
+.rin-footer__refrens {
+  display: inline-block;
+  margin-top: 20px;
+  max-width: 320px;
+}
+.rin-footer__refrens-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.rin-footer__refrens:hover .rin-footer__refrens-image {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
 .rin-footer__heading {
   font-family: var(--font-body);
   font-weight: 600;
