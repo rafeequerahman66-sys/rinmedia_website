@@ -1,28 +1,5 @@
 import { motion } from 'framer-motion'
-
-const BRAND_LOGOS = [
-  { src: '/brand-logos/nova.svg',          alt: 'Nova Residency' },
-  { src: '/brand-logos/monad.svg',         alt: 'Monad' },
-  { src: '/brand-logos/sgl.png',           alt: 'SGL',       scale: 1.5 },
-  { src: '/brand-logos/sarvam.png',        alt: 'Sarvam',    scale: 1.35 },
-  { src: '/brand-logos/hugging-face.svg',  alt: 'Hugging Face', scale: 1.5 },
-  { src: '/brand-logos/bybit.png',         alt: 'ByBit' },
-  { src: '/brand-logos/flap.png',          alt: 'FLAP',      scale: 2.6 },
-  { src: '/brand-logos/boundless-vc.png',  alt: 'Boundless', scale: 2.6 },
-  { src: '/brand-logos/00-zo-house.svg',   alt: 'Zo House' },
-  { src: '/brand-logos/nodeops.png',       alt: 'NodeOps' },
-  { src: '/brand-logos/p2p.png',           alt: 'P2P.org',   scale: 2.6 },
-  { src: '/brand-logos/avalanche.svg',     alt: 'Avalanche' },
-  { src: '/brand-logos/bnb-chain.svg',     alt: 'BNB Chain' },
-  { src: '/brand-logos/starkware.svg',     alt: 'Starkware' },
-  { src: '/brand-logos/stellar.png',       alt: 'Stellar' },
-  { src: '/brand-logos/mudrex.webp',       alt: 'Mudrex' },
-  { src: '/brand-logos/together-fund.svg', alt: 'Together Fund' },
-  { src: '/brand-logos/pizza-dao.png',     alt: 'Pizza DAO' },
-  { src: '/brand-logos/web3-kerala.png',   alt: 'Web3 Kerala' },
-  { src: '/brand-logos/easy-broker.svg',   alt: 'Easy Broker', scale: 1.6 },
-  { src: '/brand-logos/xcast.svg',         alt: 'XCast',     scale: 1.5, label: 'XCast' },
-]
+import TrustedBrands from '../components/TrustedBrands'
 
 function Star() {
   return (
@@ -97,27 +74,8 @@ export default function SectionHero() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay: 0.7 }}
           style={{ width: '100%', textAlign: 'center' }}
         >
-          <p className="rin-eyebrow" style={{ marginBottom: '1.5rem' }}>Trusted by amazing brands</p>
-          <div className="rin-marquee">
-            <div className="rin-marquee__track">
-              {[...BRAND_LOGOS, ...BRAND_LOGOS].map((logo, i) => (
-                <div
-                  className={`rin-marquee__item${logo.label ? ' rin-marquee__item--labeled' : ''}`}
-                  key={i}
-                  aria-hidden={i >= BRAND_LOGOS.length}
-                >
-                  <img
-                    src={logo.src}
-                    alt={logo.alt}
-                    loading="lazy"
-                    draggable="false"
-                    style={logo.scale ? { height: `${26 * logo.scale}px`, maxWidth: `${140 * logo.scale}px` } : undefined}
-                  />
-                  {logo.label && <span className="rin-marquee__label">{logo.label}</span>}
-                </div>
-              ))}
-            </div>
-          </div>
+          <p className="rin-eyebrow rin-logos__eyebrow">Trusted by amazing brands</p>
+          <TrustedBrands />
         </motion.div>
       </div>
 
