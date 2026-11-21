@@ -26,6 +26,7 @@ const ROW_ONE = [
   { src: '/brand-logos/vcluster.svg',      alt: 'vCluster',    s: 1.5 },
   { src: '/brand-logos/00-zo-house.svg',   alt: 'Zo House' },
   { src: '/brand-logos/else-play.webp',    alt: 'else/play',   s: 1.05 },
+  { src: '/brand-logos/the-climate-guys.webp', alt: 'The Climate Guys', s: 1.9 },
 ]
 
 const ROW_TWO = [
